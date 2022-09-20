@@ -35,22 +35,17 @@ jobs:
           path: ./ffmpeg
           ref: ${{ github.event.inputs.ffmpegTag }}
 
-      - name: install nasm
-        run: pacman -S nasm
-
-      - name: install yasm
-        run: pacman -S yasm
-
-      - name: change workdir
-        run: cd ffmpeg
-      
-      - name: config build
-        run: ./configure --enable-static --disable-shared
+      - name: install nasm/yasm
+        shell: msys2 {0}
+        run: |
+          pacman -S nasm
+          pacman -S yasm
 
       - name: make
-        run: make
-
-      - name: install
-        run: make install
-
+        shell: msys2 {0}
+        run: |
+          cd ffmpeg
+          ./configure --enable-static --disable-shared
+          make
+          make install
           
