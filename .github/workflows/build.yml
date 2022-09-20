@@ -45,7 +45,14 @@ jobs:
         shell: msys2 {0}
         run: |
           cd ffmpeg
-          ./configure --enable-static --disable-shared
+          ./configure --prefix=../ffmpeg_install --enable-static --disable-shared
           make
           make install
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: ffmpeg-install
+          # Directory containing files to upload
+          path: ffmpeg-install
           
