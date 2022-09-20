@@ -11,46 +11,46 @@ on:
 jobs:
   build:
     name: Build ffmpeg for windows
-      runs-on: windows-latest
+    runs-on: windows-latest
 
-      steps:
+    steps:
 
-        - name: setup toolchain
-          uses: msys2/setup-msys2@v2
-          with:
-            update: true
-            install: >-
-              base-devel
-              git
-              make
-            pacboy: >-
-              toolchain:p
-              cmake:p
-              ninja:p
-        
-        - name: checkout ffmpeg
-          uses: actions/checkout@v3
-          with:
-            repository: FFmpeg/FFmpeg
-            path: ./ffmpeg
-            ref: ${{ github.event.inputs.ffmpegTag }}
+      - name: setup toolchain
+        uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: >-
+            base-devel
+            git
+            make
+          pacboy: >-
+            toolchain:p
+            cmake:p
+            ninja:p
+      
+      - name: checkout ffmpeg
+        uses: actions/checkout@v3
+        with:
+          repository: FFmpeg/FFmpeg
+          path: ./ffmpeg
+          ref: ${{ github.event.inputs.ffmpegTag }}
 
-        - name: install nasm
-          run: pacman -S nasm
+      - name: install nasm
+        run: pacman -S nasm
 
-        - name: install yasm
-          run: pacman -S yasm
+      - name: install yasm
+        run: pacman -S yasm
 
-        - name: change workdir
-          run: cd ffmpeg
-        
-        - name: config build
-          run: ./configure --enable-static --disable-shared
+      - name: change workdir
+        run: cd ffmpeg
+      
+      - name: config build
+        run: ./configure --enable-static --disable-shared
 
-        - name: make
-          run: make
+      - name: make
+        run: make
 
-        - name: install
-          run: make install
+      - name: install
+        run: make install
+
           
-            
