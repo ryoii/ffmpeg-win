@@ -45,7 +45,7 @@ jobs:
         shell: msys2 {0}
         run: |
           cd ffmpeg
-          ./configure --prefix=/ffmpeg_install --enable-static --disable-shared
+          ./configure --prefix=/d/ffmpeg_install --enable-static --disable-shared
           make
           make install
       
