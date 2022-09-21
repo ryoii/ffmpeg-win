@@ -46,7 +46,7 @@ jobs:
         run: |
           cd ffmpeg
           ./configure --prefix=/d/ffmpeg_install \
-          --enable-static 
+          --enable-static \
           --disable-shared \
           --disable-debug
           --disable-gpl
