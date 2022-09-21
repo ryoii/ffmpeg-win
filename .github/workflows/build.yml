@@ -72,6 +72,7 @@ jobs:
           --enable-demuxers \
           --disable-random \
           --disable-zlib \
+          --disable-bzlib \
           --disable-iconv
           make
           make install
