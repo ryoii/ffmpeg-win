@@ -45,7 +45,7 @@ jobs:
         shell: msys2 {0}
         run: |
           cd ffmpeg
-          ./configure --prefix=../ffmpeg_install --enable-static --disable-shared
+          ./configure --prefix=/ffmpeg_install --enable-static --disable-shared
           make
           make install
       
@@ -54,5 +54,5 @@ jobs:
         with:
           name: ffmpeg-install
           # Directory containing files to upload
-          path: ffmpeg-install
+          path: /ffmpeg_install
           
