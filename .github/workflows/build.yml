@@ -65,7 +65,7 @@ jobs:
           --disable-postproc \
           --disable-swscale \
           --disable-swresample \
-          -disable-everything
+          --disable-everything
           make
           make install
       
