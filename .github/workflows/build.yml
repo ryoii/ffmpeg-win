@@ -67,7 +67,6 @@ jobs:
           --disable-fft \
           --disable-faan \
           --disable-pixelutils \
-          --disable-everything \
           --enable-muxers \
           --enable-demuxers \
           --disable-random \
