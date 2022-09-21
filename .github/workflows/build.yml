@@ -48,8 +48,8 @@ jobs:
           ./configure --prefix=/d/ffmpeg_install \
           --enable-static \
           --disable-shared \
-          --disable-debug
-          --disable-gpl
+          --disable-debug \
+          --disable-gpl \
           --disable-ffmpeg \
           --disable-ffprobe \
           --disable-ffplay \
@@ -65,7 +65,7 @@ jobs:
           --disable-avdevice \
           --disable-postproc \
           --disable-swscale \
-          --disable-swresample
+          --disable-swresample \
           -disable-everything
           make
           make install
