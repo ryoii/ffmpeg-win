@@ -69,6 +69,7 @@ jobs:
           --disable-pixelutils \
           --enable-muxers \
           --enable-demuxers \
+          --enable-protocols \
           --disable-random \
           --disable-zlib \
           --disable-bzlib \
