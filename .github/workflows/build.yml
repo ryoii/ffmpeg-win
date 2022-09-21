@@ -67,7 +67,7 @@ jobs:
           --disable-fft \
           --disable-faan \
           --disable-pixelutils \
-          --disable-everything
+          --disable-everything \
           --enable-muxer=mp4 \
           --enable-muxer=flv \
           --enable-muxer=acc \
