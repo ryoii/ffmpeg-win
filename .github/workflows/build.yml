@@ -68,11 +68,11 @@ jobs:
           --disable-faan \
           --disable-pixelutils \
           --disable-everything \
-          --enable-muxer=mp4 \
-          --enable-muxer=m4v \
-          --enable-muxer=flv \
-          --enable-muxer=acc \
-          --disable-random
+          --enable-muxers \
+          --enable-demuxers \
+          --disable-random \
+          --enable-zlib \
+          --disable-iconv
           make
           make install
       
