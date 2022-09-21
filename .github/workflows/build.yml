@@ -60,7 +60,6 @@ jobs:
           --disable-manpages \
           --disable-podpages \
           --disable-txtpages \
-          --disable-avresample \
           --disable-avfilter \
           --disable-avdevice \
           --disable-postproc \
