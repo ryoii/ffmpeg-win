@@ -45,7 +45,28 @@ jobs:
         shell: msys2 {0}
         run: |
           cd ffmpeg
-          ./configure --prefix=/d/ffmpeg_install --enable-static --disable-shared
+          ./configure --prefix=/d/ffmpeg_install 
+          --enable-static 
+          --disable-shared \
+          --disable-debug
+          --disable-gpl
+          --disable-ffmpeg \
+          --disable-ffprobe \
+          --disable-ffplay \
+          --disable-programs \
+          --disable-symver \
+          --disable-doc \
+          --disable-htmlpages \
+          --disable-manpages \
+          --disable-podpages \
+          --disable-txtpages \
+          --disable-avresample \
+          --disable-avfilter \
+          --disable-avdevice \
+          --disable-postproc \
+          --disable-swscale \
+          --disable-swresample
+          -disable-everything
           make
           make install
       
