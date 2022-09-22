@@ -48,8 +48,6 @@ jobs:
           ./configure --prefix=/d/ffmpeg_install \
           --enable-static \
           --disable-shared \
-          --disable-debug \
-          --disable-gpl \
           --disable-programs \
           --disable-doc \
           --disable-avdevice \
@@ -58,15 +56,6 @@ jobs:
           --disable-postproc \
           --disable-avfilter \
           --disable-network \
-          # --disable-dct \
-          # --disable-dwt \
-          # --disable-error-resilience \
-          # --disable-lsp \
-          # --disable-mdct \
-          # --disable-rdft \
-          # --disable-fft \
-          # --disable-faan \
-          # --disable-pixelutils \
           --enable-muxers \
           --enable-demuxers \
           --enable-encoders \
