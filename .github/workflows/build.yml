@@ -27,6 +27,13 @@ jobs:
             toolchain:p
             cmake:p
             ninja:p
+            
+      - name: checkout x264
+        uses: actions/checkout@v3
+        with:
+            repository: mirror/x264
+            path: ./x264
+            ref: stable
       
       - name: checkout ffmpeg
         uses: actions/checkout@v3
@@ -40,12 +47,23 @@ jobs:
         run: |
           pacman -S --noconfirm nasm
           pacman -S --noconfirm yasm
-
-      - name: make
+      
+      - name: make x264
         shell: msys2 {0}
         run: |
-          cd ffmpeg
+          cd x264
+          ./configure --prefix=/d/x264_install \
+          --enable-static
+          make
+          make install
+
+      - name: make ffmpeg
+        shell: msys2 {0}
+        run: |
+          cd ../ffmpeg
           ./configure --prefix=/d/ffmpeg_install \
+          --extra-cflags=-l/d/x264_install/include  \
+          --extra-ldflags=-L/d/x264_install/lib \
           --enable-static \
           --disable-shared \
           --disable-programs \
