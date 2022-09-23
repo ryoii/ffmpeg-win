@@ -56,11 +56,12 @@ jobs:
           --enable-static
           make
           make install
+          cd ..
 
       - name: make ffmpeg
         shell: msys2 {0}
         run: |
-          cd ../ffmpeg
+          cd ffmpeg
           ./configure --prefix=/d/ffmpeg_install \
           --extra-cflags=-l/d/x264_install/include  \
           --extra-ldflags=-L/d/x264_install/lib \
