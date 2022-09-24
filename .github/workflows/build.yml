@@ -91,6 +91,7 @@ jobs:
           --extra-cflags=-l/d/ffmpeg/dep/include  \
           --extra-ldflags=-L/d/ffmpeg/dep/lib \
           --enable-gpl \
+          --enable-nonfree \
           --enable-static \
           --disable-shared \
           --disable-programs \
