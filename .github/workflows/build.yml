@@ -69,6 +69,7 @@ jobs:
         shell: msys2 {0}
         run: |
           cd fdk-acc
+          ./autogen.sh
           ./configure --prefix=/d/ffmpeg/dep \
           --enable-static
           make
