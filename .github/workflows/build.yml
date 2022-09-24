@@ -111,7 +111,7 @@ jobs:
           --disable-faan \
           --disable-pixelutils \
           --enable-libx264 \
-          --enable-libfdk-acc \
+          --enable-libfdk-aac \
           --disable-everything \
           --enable-muxer=mp4 \
           --enable-demuxer=mpegts \
