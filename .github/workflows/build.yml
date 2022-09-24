@@ -34,6 +34,13 @@ jobs:
             repository: mirror/x264
             path: ./x264
             ref: stable
+            
+      - name: checkout acc
+        uses: actions/checkout@v3
+        with:
+            repository: mstorsjo/fdk-aac
+            path: ./fdk-acc
+            ref: v2.0.2
       
       - name: checkout ffmpeg
         uses: actions/checkout@v3
@@ -52,7 +59,17 @@ jobs:
         shell: msys2 {0}
         run: |
           cd x264
-          ./configure --prefix=/d/x264_install \
+          ./configure --prefix=/d/ffmpeg/dep \
+          --enable-static
+          make
+          make install
+          cd ..
+          
+      - name: make acc
+        shell: msys2 {0}
+        run: |
+          cd fdk-acc
+          ./configure --prefix=/d/ffmpeg/dep \
           --enable-static
           make
           make install
@@ -62,9 +79,10 @@ jobs:
         shell: msys2 {0}
         run: |
           cd ffmpeg
-          ./configure --prefix=/d/ffmpeg_install \
-          --extra-cflags=-l/d/x264_install/include  \
-          --extra-ldflags=-L/d/x264_install/lib \
+          ./configure --prefix=/d/ffmpeg/install \
+          --extra-cflags=-l/d/ffmpeg/dep/include  \
+          --extra-ldflags=-L/d/ffmpeg/dep/lib \
+          --enable-gpl \
           --enable-static \
           --disable-shared \
           --disable-programs \
@@ -75,21 +93,32 @@ jobs:
           --disable-postproc \
           --disable-avfilter \
           --disable-network \
-          --enable-muxers \
-          --enable-demuxers \
-          --enable-encoders \
-          --enable-protocols \
-          --disable-random \
-          --disable-zlib \
-          --disable-bzlib \
-          --disable-iconv
+          --disable-dct \
+          --disable-dwt \
+          --disable-error-resilience \
+          --disable-lsp \
+          --disable-mdct \
+          --disable-rdft \
+          --disable-fft \
+          --disable-faan \
+          --disable-pixelutils \
+          --enable-libx264 \
+          --enable-libfdk-acc \
+          --disable-everything \
+          --enable-muxer=mp4 \
+          --enable-demuxer=mpegts \
+          --enable-protocol=file \
+          --enable-encoder=h264 \
+          --enable-decoder=h264 \
+          --enable-encoder=aac \
+          --enable-decoder=aac
           make
           make install
       
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: ffmpeg-install
+          name: ffmpeg
           # Directory containing files to upload
-          path: /ffmpeg_install
+          path: /d/ffmpeg
           
