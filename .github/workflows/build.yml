@@ -54,6 +54,12 @@ jobs:
         run: |
           pacman -S --noconfirm nasm
           pacman -S --noconfirm yasm
+          
+      - name: install tool
+        shell: msys2 {0}
+        run: |
+          pacman -S --noconfirm autoconf
+          pacman -S --noconfirm automake
       
       - name: make x264
         shell: msys2 {0}
